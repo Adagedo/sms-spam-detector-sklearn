@@ -41,7 +41,7 @@ def model_perform(
             
 data = pd.read_csv("file_name.csv", encoding='latin-1')
 
-training_data_length = 0.8 * len(data)
+training_data_length = int(0.8 * len(data))
 
 learning_data = data[:training_data_length]
 test_data = data[len(learning_data):]
