@@ -8,7 +8,7 @@ from sklearn.feature_extraction.text import (
     TfidfVectorizer, 
     HashingVectorizer
 )
-
+import os
 from sklearn.calibration import *
 from sklearn.linear_model import * 
 from sklearn.multiclass import *
@@ -38,9 +38,9 @@ def model_perform(
             
             string += '. has a score of : ' + str(score)
             print(string)
-            
-data = pd.read_csv("data/spam.csv", encoding='latin-1')
 
+
+data = pd.read_csv("./model/data/spam.csv", encoding='latin-1')
 training_data_length = int(0.8 * len(data))
 
 learning_data = data[:training_data_length]
