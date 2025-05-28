@@ -5,7 +5,7 @@ from sklearn.neighbors import *
 from sklearn.tree import *
 from sklearn.feature_extraction.text import (
     CountVectorizer, 
-    TfidfTransformer, 
+    TfidfVectorizer, 
     HashingVectorizer
 )
 
@@ -13,7 +13,7 @@ from sklearn.calibration import *
 from sklearn.linear_model import * 
 from sklearn.multiclass import *
 from sklearn.svm import *
-import pandas
+import pandas as pd
 
 
 def model_perform(
@@ -39,6 +39,10 @@ def model_perform(
             string += '. has a score of : ' + str(score)
             print(string)
             
-        
-            
-            
+data = pd.read_csv("file_name.csv", encoding='latin-1')
+
+training_data_length = 0.8 * len(data)
+
+learning_data = data[:training_data_length]
+test_data = data[len(learning_data):]
+
