@@ -21,7 +21,7 @@ def model_perform(
     vectorizers:list, 
     train_data,
     test_data
-):
+)->None:
     for classifier in classifiers:
         for vectorizer in vectorizers:
             string = ''
@@ -32,4 +32,13 @@ def model_perform(
             vectorize_text = vectorizer.fit_transfrom(train_data.v2)
             classifier.fit(vectorize_text, train_data.v1)
             
-            # 
+            # the models score 
+            vectorize_text = vectorizer.transform(test_data.v2)
+            score = classifier.score(vectorize_text, test_data.v1)
+            
+            string += '. has a score of : ' + str(score)
+            print(string)
+            
+        
+            
+            
