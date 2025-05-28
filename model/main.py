@@ -46,3 +46,32 @@ training_data_length = 0.8 * len(data)
 learning_data = data[:training_data_length]
 test_data = data[len(learning_data):]
 
+
+model_perform(
+    classifiers=[
+        DecisionTreeClassifier(),
+        CalibratedClassifierCV(),
+        DummyClassifier(),
+        PassiveAggressiveClassifier(),
+        RidgeClassifier(),
+        RidgeClassifierCV(),
+        OneVsRestClassifier(SVC(kernel='linear')),
+        OneVsRestClassifier(LogisticRegression()),
+        KNeighborsClassifier(),
+        SGDClassifier(),
+        BernoulliNB(), 
+        RandomForestClassifier(n_estimators=100, n_jobs=-1),
+        AdaBoostClassifier(), 
+        BaggingClassifier(),
+        ExtraTreesClassifier(),
+        GradientBoostingClassifier(),
+    ],
+    vectorizers=[
+        CountVectorizer(),
+        TfidfVectorizer(),
+        HashingVectorizer()
+    ]
+    , train_data=learning_data, 
+    test_data=test_data
+)
+   
