@@ -17,8 +17,8 @@ import pandas
 
 
 def model_perform(
-    classifiers, 
-    vectorizers, 
+    classifiers:list, 
+    vectorizers:list, 
     train_data,
     test_data
 ):
