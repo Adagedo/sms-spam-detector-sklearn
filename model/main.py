@@ -29,11 +29,11 @@ def model_perform(
             
             #training the model with sklearn
             
-            vectorize_text = vectorizer.fit_transfrom(train_data.v2)
+            vectorize_text = vectorizer.fit_transform(train_data.v2)
             classifier.fit(vectorize_text, train_data.v1)
             
             # the models score 
-            vectorize_text = vectorizer.transform(test_data.v2)
+            vectorize_text = vectorizer.fit_transform(test_data.v2)
             score = classifier.score(vectorize_text, test_data.v1)
             
             string += '. has a score of : ' + str(score)
