@@ -39,7 +39,7 @@ def model_perform(
             string += '. has a score of : ' + str(score)
             print(string)
             
-data = pd.read_csv("file_name.csv", encoding='latin-1')
+data = pd.read_csv("data/spam.csv", encoding='latin-1')
 
 training_data_length = int(0.8 * len(data))
 
