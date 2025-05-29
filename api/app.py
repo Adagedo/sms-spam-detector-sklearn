@@ -6,6 +6,6 @@ from model.predictions import model
 router = APIRouter()
 
 router.post("/sms")
-async def sendMessage(messages):
+async def sendMessage(userRequest):
     
     return ""
