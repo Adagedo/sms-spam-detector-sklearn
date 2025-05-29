@@ -27,51 +27,58 @@ def model_perform(
             string = ''
             string += classifier.__class__.__name__ + 'with' + vectorizer.__class__.__name__
             
-            #training the model with sklearn
             
-            vectorize_text = vectorizer.fit_transform(train_data.v2)
-            classifier.fit(vectorize_text, train_data.v1)
+            vectorizer.fit(train_data["v2"])
             
-            # the models score 
-            vectorize_text = vectorizer.fit_transform(test_data.v2)
-            score = classifier.score(vectorize_text, test_data.v1)
-            
-            string += '. has a score of : ' + str(score)
+            transformed_train_data_v2 = vectorizer.transform(train_data["v2"])
+            transformed_test_data_v2 = vectorizer.transform(test_data["v2"])
+
+            train_labels = train_data["v1"]
+            test_labels = test_data["v1"]
+
+            classifier.fit(transformed_train_data_v2, train_labels)
+
+            score = classifier.score(transformed_test_data_v2, test_labels)
+
+            string += ". has a score of: " + str(score)
             print(string)
 
 
+
 data = pd.read_csv("./model/data/spam.csv", encoding='latin-1')
+print(data[:10]["v1"])
+print(data[:10]["v2"])
 training_data_length = int(0.8 * len(data))
 
 learning_data = data[:training_data_length]
 test_data = data[len(learning_data):]
 
 
-model_perform(
-    classifiers=[
-        DecisionTreeClassifier(),
-        CalibratedClassifierCV(),
-        DummyClassifier(),
-        PassiveAggressiveClassifier(),
-        RidgeClassifier(),
-        RidgeClassifierCV(),
-        OneVsRestClassifier(SVC(kernel='linear')),
-        OneVsRestClassifier(LogisticRegression()),
-        KNeighborsClassifier(),
-        SGDClassifier(),
-        BernoulliNB(), 
-        RandomForestClassifier(n_estimators=100, n_jobs=-1),
-        AdaBoostClassifier(), 
-        BaggingClassifier(),
-        ExtraTreesClassifier(),
-        GradientBoostingClassifier(),
-    ],
-    vectorizers=[
-        CountVectorizer(),
-        TfidfVectorizer(),
-        HashingVectorizer()
-    ]
-    , train_data=learning_data, 
-    test_data=test_data
-)
+# model_perform(
+#     classifiers=[
+#         DecisionTreeClassifier(),
+#         CalibratedClassifierCV(),
+#         DummyClassifier(),
+#         PassiveAggressiveClassifier(),
+#         RidgeClassifier(),
+#         RidgeClassifierCV(),
+#         OneVsRestClassifier(SVC(kernel='linear')),
+#         OneVsRestClassifier(LogisticRegression()),
+#         KNeighborsClassifier(),
+#         SGDClassifier(),
+#         BernoulliNB(), 
+#         RandomForestClassifier(n_estimators=100, n_jobs=-1),
+#         AdaBoostClassifier(), 
+#         BaggingClassifier(),
+#         ExtraTreesClassifier(),
+#         GradientBoostingClassifier(),
+#     ],
+#     vectorizers=[
+#         CountVectorizer(),
+#         TfidfVectorizer(),
+#         HashingVectorizer()
+#     ]
+#     , train_data=learning_data, 
+#     test_data=test_data
+# )
    
