@@ -3,7 +3,7 @@ This project classifies SMS messages as spam or ham (not spam).
 It compares multiple classifiers and vectorizers to determine the best performance.
 
 ## Features
-### ✅ Uses:
+### Classifiers:
 
 - DecisionTreeClassifier
 
@@ -16,7 +16,7 @@ It compares multiple classifiers and vectorizers to determine the best performan
 - RidgeClassifier
 
 
-### ✅ Vectorization:
+###  Vectorizers:
 
 - CountVectorizer
 
@@ -24,7 +24,7 @@ It compares multiple classifiers and vectorizers to determine the best performan
 
 - HashingVectorizer
 
-### ✅ Dataset:
+### Dataset:
 - A CSV file containing SMS messages labeled as either "spam" or "ham".
 
 
