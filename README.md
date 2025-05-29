@@ -27,6 +27,11 @@ It compares multiple classifiers and vectorizers to determine the best performan
 ### Dataset:
 - A CSV file containing SMS messages labeled as either "spam" or "ham".
 
+## Usage
+- clone this repo with `git clone https://github.com/Adagedo/sms-spam-detector-sklearn.git`
+- install dependencies with `pip install requirement.txt`
+
+
 
 
 ## 📝 Notes
