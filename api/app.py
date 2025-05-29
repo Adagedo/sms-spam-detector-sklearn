@@ -1,9 +1,10 @@
-from fastapi import FastAPI, Request, Response
+from fastapi import Request, Response, APIRouter
 
-app = FastAPI()
 
-@app.get("/")
-async def root():
-    return "server is running..."
+router = APIRouter()
+
+router.get("/sms")
+async def RunModel():
+    pass
 
 #create the api here
