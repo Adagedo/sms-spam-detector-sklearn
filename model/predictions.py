@@ -59,7 +59,7 @@ def model(classifier=classifier, vectorizer=vectorizer, learning_data=learning_d
     #making predictions on the message 
     vectorized_message = vectorizer.transform([message])
     message_predictions:str = classifier.predict(vectorized_message)[0]
-    return message_predictions
+    return message_predictions, scores
 
 
 

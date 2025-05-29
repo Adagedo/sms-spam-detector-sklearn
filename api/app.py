@@ -14,11 +14,12 @@ async def sendMessage(userRequest:UserRequest):
         message:str = userRequest.message
         if message == None or message == "":
             raise HTTPException(status_code=status.HTTP_411_LENGTH_REQUIRED, detail="message can not be None or of length zero")
-        models_prediction = model(message=message)
+        models_prediction, score= model(message=message)
         print(models_prediction)
         response = {
             "msgtype":models_prediction, 
-            "sender":userRequest.user
+            "sender":userRequest.user,
+            "models_score":score
         }
         
         return response

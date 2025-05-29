@@ -13,6 +13,7 @@ class UserRequest(BaseModel):
 class ResponseBody(BaseModel):
     
     msgtype:str
+    models_score:int|float
     sender:str
     
     
