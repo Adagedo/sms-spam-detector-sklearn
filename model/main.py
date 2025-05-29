@@ -25,7 +25,7 @@ def model_perform(
     for classifier in classifiers:
         for vectorizer in vectorizers:
             string = ''
-            string += classifier.__class__.__name__ + 'with' + vectorizer.__class__.__name__
+            string += classifier.__class__.__name__ + ' with ' + vectorizer.__class__.__name__
             
             
             vectorizer.fit(train_data["v2"])
@@ -46,39 +46,42 @@ def model_perform(
 
 
 data = pd.read_csv("./model/data/spam.csv", encoding='latin-1')
-print(data[:10]["v1"])
-print(data[:10]["v2"])
+# print(data[:10]["v1"])
+# print(data[:10]["v2"])
+"""
+Note v1 represents the labels while v2 represents the data
+"""
 training_data_length = int(0.8 * len(data))
 
 learning_data = data[:training_data_length]
 test_data = data[len(learning_data):]
 
 
-# model_perform(
-#     classifiers=[
-#         DecisionTreeClassifier(),
-#         CalibratedClassifierCV(),
-#         DummyClassifier(),
-#         PassiveAggressiveClassifier(),
-#         RidgeClassifier(),
-#         RidgeClassifierCV(),
-#         OneVsRestClassifier(SVC(kernel='linear')),
-#         OneVsRestClassifier(LogisticRegression()),
-#         KNeighborsClassifier(),
-#         SGDClassifier(),
-#         BernoulliNB(), 
-#         RandomForestClassifier(n_estimators=100, n_jobs=-1),
-#         AdaBoostClassifier(), 
-#         BaggingClassifier(),
-#         ExtraTreesClassifier(),
-#         GradientBoostingClassifier(),
-#     ],
-#     vectorizers=[
-#         CountVectorizer(),
-#         TfidfVectorizer(),
-#         HashingVectorizer()
-#     ]
-#     , train_data=learning_data, 
-#     test_data=test_data
-# )
+model_perform(
+    classifiers=[
+        DecisionTreeClassifier(),
+        CalibratedClassifierCV(),
+        DummyClassifier(),
+        PassiveAggressiveClassifier(),
+        RidgeClassifier(),
+        RidgeClassifierCV(),
+        OneVsRestClassifier(SVC(kernel='linear')),
+        OneVsRestClassifier(LogisticRegression()),
+        KNeighborsClassifier(),
+        SGDClassifier(),
+        BernoulliNB(), 
+        RandomForestClassifier(n_estimators=100, n_jobs=-1),
+        AdaBoostClassifier(), 
+        BaggingClassifier(),
+        ExtraTreesClassifier(),
+        GradientBoostingClassifier(),
+    ],
+    vectorizers=[
+        CountVectorizer(),
+        TfidfVectorizer(),
+        HashingVectorizer()
+    ]
+    , train_data=learning_data, 
+    test_data=test_data
+)
    
