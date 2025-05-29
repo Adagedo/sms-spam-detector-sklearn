@@ -13,7 +13,6 @@ from sklearn.linear_model import *
 from sklearn.multiclass import *
 from sklearn.svm import *
 import pandas as pd
-import csv
 from typing import Optional
 
 
@@ -24,10 +23,10 @@ training_data_length = int(0.8 * len(data))
 learning_data = data[:training_data_length]
 test_data = data[len(learning_data):]
 
-
+# picked the best model
 classifier = OneVsRestClassifier(SVC(kernel='linear'))
 vectorizer = TfidfVectorizer()
-def model(classifier=classifier, vectorizer=vectorizer, learning_data=learning_data, test_data=test_data):
+def model(classifier=classifier, vectorizer=vectorizer, learning_data=learning_data, test_data=test_data, message:Optional[str]=None):
     
     global result
     vectorizer.fit(learning_data["v2"])
@@ -43,7 +42,7 @@ def model(classifier=classifier, vectorizer=vectorizer, learning_data=learning_d
     print(f"{scores * 100:.4f}%") 
     
     # making predictions 
-    
+    csv_arr=[]
     for index, row in test_data.iterrows():
         ans = row.iloc[0]
         text = row.iloc[1]
@@ -55,11 +54,14 @@ def model(classifier=classifier, vectorizer=vectorizer, learning_data=learning_d
             result = True
         else:
             result = False
-            
-    print(result)
+        csv_arr.append([len(csv_arr), text, ans, predicttions, result])
     
-model()
-            
+    #making predictions on the message 
+    vectorized_message = vectorizer.transform([message])
+    message_predictions:str = classifier.predict(vectorized_message)[0]
+    return message_predictions
+
+
 
 
 
