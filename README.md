@@ -30,6 +30,7 @@ It compares multiple classifiers and vectorizers to determine the best performan
 ## Usage
 - clone this repo with `git clone https://github.com/Adagedo/sms-spam-detector-sklearn.git`
 - install dependencies with `pip install requirement.txt`
+After running the model, you should see an output like this. ![the score](models_score.png)
 
 
 
