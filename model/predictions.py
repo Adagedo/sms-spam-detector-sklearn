@@ -44,10 +44,9 @@ def model(classifier=classifier, vectorizer=vectorizer, learning_data=learning_d
     
     # making predictions 
     
-    csv_array = []
     for index, row in test_data.iterrows():
-        ans = row[0]
-        text = row[1]
+        ans = row.iloc[0]
+        text = row.iloc[1]
         
         vectorize_text = vectorizer.transform([text])
         predicttions = classifier.predict(vectorize_text)[0]
