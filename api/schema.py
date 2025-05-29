@@ -10,7 +10,7 @@ class UserRequest(BaseModel):
     sent_at:datetime
     
 
-class ResposeBody(BaseModel):
+class ResponseBody(BaseModel):
     
     is_spam:bool
     is_ham:bool
