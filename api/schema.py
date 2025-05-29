@@ -5,16 +5,15 @@ from typing import Optional
 
 class UserRequest(BaseModel):
     
-    user:Optional[str]=None, 
-    meassage:str 
-    sent_at:datetime
+    user:str
+    message:str 
+    sent_at:Optional[datetime]=datetime.utcnow()
     
 
 class ResponseBody(BaseModel):
     
-    is_spam:bool
-    is_ham:bool
-    user:str
+    msgtype:str
+    sender:str
     
     
     

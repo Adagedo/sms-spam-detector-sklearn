@@ -1,20 +1,30 @@
 from fastapi import Request, Response, APIRouter,HTTPException, status
 from model.predictions import model
-from schema import UserRequest, ResponseBody
+from api.schema import UserRequest, ResponseBody
 from typing import List
 
 
 
 router = APIRouter()
 
-router.post("/sms", status_code=status.HTTP_201_CREATED, response_model=List[ResponseBody])
+@router.post("/sms", status_code=status.HTTP_201_CREATED, response_model=ResponseBody)
 async def sendMessage(userRequest:UserRequest):
     
     try:
-        print(userRequest)
+        message:str = userRequest.message
+        if message == None or message == "":
+            raise HTTPException(status_code=status.HTTP_411_LENGTH_REQUIRED, detail="message can not be None or of length zero")
+        models_prediction = model(message=message)
+        print(models_prediction)
+        response = {
+            "msgtype":models_prediction, 
+            "sender":userRequest.user
+        }
+        
+        return response
     
     except Exception as e:
+        print(e)
         raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail=f"{e}")
     
-    return 
         
