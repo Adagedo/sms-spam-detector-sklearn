@@ -1,10 +1,11 @@
 from fastapi import Request, Response, APIRouter
+from model.predictions import model
+
 
 
 router = APIRouter()
 
-router.get("/sms")
-async def RunModel():
-    pass
-
-#create the api here
+router.post("/sms")
+async def sendMessage(messages):
+    
+    return ""
