@@ -14,7 +14,7 @@ from sklearn.multiclass import *
 from sklearn.svm import *
 import pandas as pd
 import csv
-
+from typing import Optional
 
 
 data = pd.read_csv("./model/data/spam.csv", encoding='latin-1')
@@ -25,8 +25,11 @@ learning_data = data[:training_data_length]
 test_data = data[len(learning_data):]
 
 
-def model(classifier, vectorizer, learning_data, test_data):
-
+classifier = OneVsRestClassifier(SVC(kernel='linear'))
+vectorizer = TfidfVectorizer()
+def model(classifier=classifier, vectorizer=vectorizer, learning_data=learning_data, test_data=test_data):
+    
+    global result
     vectorizer.fit(learning_data["v2"])
 
     transformed_learning_data = vectorizer.transform(learning_data['v2'])
@@ -40,9 +43,25 @@ def model(classifier, vectorizer, learning_data, test_data):
     print(f"{scores * 100:.4f}%") 
     
     # making predictions 
+    
+    csv_array = []
+    for index, row in test_data.iterrows():
+        ans = row[0]
+        text = row[1]
+        
+        vectorize_text = vectorizer.transform([text])
+        predicttions = classifier.predict(vectorize_text)[0]
+        
+        if predicttions == ans:
+            result = True
+        else:
+            result = False
+            
+    print(result)
+    
+model()
+            
 
 
 
 
-classifier = OneVsRestClassifier(SVC(kernel='linear'))
-vectorizer = TfidfVectorizer()
