@@ -16,7 +16,6 @@ async def sendMessage(userRequest:UserRequest):
             raise HTTPException(status_code=status.HTTP_411_LENGTH_REQUIRED, detail="message can not be None or of length zero")
         models_prediction, score= model(message=message)
         score_in_percent = score * 100
-        print(models_prediction)
         response = {
             "msgtype":models_prediction, 
             "sender":userRequest.user,
@@ -26,7 +25,6 @@ async def sendMessage(userRequest:UserRequest):
         return response
     
     except Exception as e:
-        print(e)
         raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail=f"{e}")
     
         
