@@ -24,6 +24,10 @@ It compares multiple classifiers and vectorizers to determine the best performan
 
 - HashingVectorizer
 
+### FastApi
+- fastapi is a python pacakge for building scalable backend apis
+- for more info about fastapi you can my github repo on fastapi implementations
+
 ### Dataset:
 - A CSV file containing SMS messages labeled as either "spam" or "ham".
 
@@ -31,8 +35,12 @@ It compares multiple classifiers and vectorizers to determine the best performan
 - clone this repo with `git clone https://github.com/Adagedo/sms-spam-detector-sklearn.git`
 - install dependencies with `pip install requirement.txt`
 - After running the model, you should see an output like this. ![the score](models_score.png)
-
-
+- To run the application, `uvicorn main:app --reload`
+- what you will see `INFO: Uvicorn running on http://localhost:8000 (Press CTRL+C to quit) \n INFO:Started reloader process [8976] using WatchFiles`
+- sample images ham data ![ham data](test_in_one.png)
+- Ouput of ![ham response](test_in_two.png)
+- Sample spam request body ![sapm](text_spam_in.png)
+- Sample spam response ![sapm res](text_spam_out.png)
 
 
 ## 📝 Notes
