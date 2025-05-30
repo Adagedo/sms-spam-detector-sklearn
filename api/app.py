@@ -20,7 +20,7 @@ async def sendMessage(userRequest:UserRequest):
         response = {
             "msgtype":models_prediction, 
             "sender":userRequest.user,
-            "models_score":score_in_percent
+            "models_score":f"{score_in_percent:.4f} %"
         }
         
         return response
