@@ -37,10 +37,10 @@ It compares multiple classifiers and vectorizers to determine the best performan
 - After running the model, you should see an output like this. ![the score](models_score.png)
 - To run the application, `uvicorn main:app --reload`
 - what you will see `INFO: Uvicorn running on http://localhost:8000 (Press CTRL+C to quit) \n INFO:Started reloader process [8976] using WatchFiles`
-- sample images ham data ![ham data](test_in_one.png)
-- Ouput of ![ham response](test_in_two.png)
-- Sample spam request body ![sapm](text_spam_in.png)
-- Sample spam response ![sapm res](text_spam_out.png)
+- api test ![input](test_in_one.png)
+- api test ![output](test_in_two.png)
+- api test ![sapm](text_spam_in.png)
+- api test ![sapm res](text_spam_out.png)
 
 
 ## 📝 Notes
